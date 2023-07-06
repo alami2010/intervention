@@ -1,0 +1,66 @@
+
+entity Intervention {
+	type TypeIntervention,
+	start  Instant,
+    finish Instant,
+    raison  String,
+    unitNumber  String
+    creationDate LocalDate,
+}
+
+entity FloorData {
+	name String
+}
+
+entity TierData {
+	name String
+}
+
+entity RoomData {
+	name String
+}
+
+
+entity Floor {
+	name String
+	}
+
+entity Tier {
+	name String
+}
+
+entity Room {
+	name String
+}
+enum TypeIntervention {
+    Construction , Emergency
+}
+
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+Intervention to Floor{intervention} ,
+    Floor to Tier{floor} ,
+    Tier to Room{tier},
+    
+    FloorData to TierData{floor} ,
+    TierData to RoomData{tier}
+
+}
+
+
+ 
+
+paginate Intervention with pagination
+paginate Floor with pagination
+paginate Tier with pagination
+paginate Room with pagination
+paginate FloorData with pagination
+paginate TierData with pagination
+paginate RoomData with pagination
+
+dto * with mapstruct
+
+service all with serviceImpl
+
