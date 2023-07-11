@@ -1,5 +1,7 @@
 # intervention
 
+java -jar intervention-0.0.1-SNAPSHOT.jar --server.port=8084 & disown
+
 This application was generated using JHipster 7.9.3, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.3](https://www.jhipster.tech/documentation-archive/v7.9.3).
 
 ## Project Structure
@@ -249,3 +251,7 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [leaflet]: https://leafletjs.com/
 [definitelytyped]: https://definitelytyped.org/
 [angular cli]: https://cli.angular.io/
+
+#   i n t e r v e n t i o n 
+ 
+ 

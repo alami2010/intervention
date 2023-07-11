@@ -1,0 +1,27 @@
+{
+  "applications": "*",
+  "changelogDate": "20230706220743",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "room",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Room",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tier",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "tier",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

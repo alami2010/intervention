@@ -1,0 +1,27 @@
+{
+  "applications": "*",
+  "changelogDate": "20230706220738",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "floor_data",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "FloorData",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tierData",
+      "otherEntityRelationshipName": "floor",
+      "relationshipName": "tierData",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

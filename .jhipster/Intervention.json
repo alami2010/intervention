@@ -1,0 +1,48 @@
+{
+  "applications": "*",
+  "changelogDate": "20230706220737",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "intervention",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "TypeIntervention",
+      "fieldValues": "Construction,Emergency"
+    },
+    {
+      "fieldName": "start",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "finish",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "raison",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unitNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Intervention",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "floor",
+      "otherEntityRelationshipName": "intervention",
+      "relationshipName": "floor",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,165 @@
+<div class="d-flex justify-content-center">
+  <div class="col-12">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()">
+      <h2 id="jhi-intervention-heading" data-cy="InterventionCreateUpdateHeading">WSD</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" [(ngModel)]="intervention.id" [readonly]="true" />
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="row mb-3">
+              <label class="form-label" for="field_type">Type</label>
+              <select class="form-control" name="type" [(ngModel)]="intervention.type" id="field_type" data-cy="type">
+                <option [ngValue]="null"></option>
+                <option *ngFor="let typeIntervention of typeInterventionValues" [value]="typeIntervention">
+                  {{ typeIntervention }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="row mb-3">
+              <label class="form-label" for="field_start">Start</label>
+              <div class="d-flex">
+                <input
+                  id="field_start"
+                  data-cy="start"
+                  type="datetime-local"
+                  class="form-control"
+                  name="start"
+                  [(ngModel)]="intervention.start"
+                  placeholder="YYYY-MM-DD HH:mm"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="row mb-3">
+              <label class="form-label" for="field_finish">Finish</label>
+              <div class="d-flex">
+                <input
+                  id="field_finish"
+                  data-cy="finish"
+                  type="datetime-local"
+                  class="form-control"
+                  name="finish"
+                  [(ngModel)]="intervention.finish"
+                  placeholder="YYYY-MM-DD HH:mm"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="row mb-3">
+              <label class="form-label" for="field_unitNumber">units to enter</label>
+              <input
+                style="margin-left: 5px"
+                type="text"
+                class="form-control"
+                name="unitNumber"
+                id="field_unitNumber"
+                data-cy="unitNumber"
+                [(ngModel)]="intervention.unitNumber"
+              />
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="row mb-3">
+              <label class="form-label" for="field_email">Email</label>
+              <input
+                style="margin-left: 5px"
+                type="text"
+                class="form-control"
+                name="raison"
+                id="field_email"
+                data-cy="email"
+                [(ngModel)]="intervention.email"
+              />
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="row mb-3">
+              <label class="form-label" for="field_raison">Raison</label>
+              <input
+                style="margin-left: 5px"
+                type="text"
+                class="form-control"
+                name="raison"
+                id="field_raison"
+                data-cy="raison"
+                [(ngModel)]="intervention.raison"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button style="" type="button" (click)="addFloor()" id="add-floor" class="btn btn-primary">
+          <fa-icon icon="add"></fa-icon>&nbsp;<span>Floor Affected</span>
+        </button>
+
+        <div style="border: dashed cornflowerblue" *ngFor="let floor of intervention?.floors; let ifx = index">
+          <div class="row">
+            <div class="col-4">
+              <label style="font-size: 20px" class="form-label">Floor </label>
+            </div>
+            <div class="col-8">
+              <select [(ngModel)]="floor.name" class="form-control" name="floor{{ ifx }}" (ngModelChange)="onChange($event, floor)">
+                <option [ngValue]="floorOption" *ngFor="let floorOption of floorsCollection">{{ floorOption }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-10">
+              <ul class="list-inline text-center align-items-center">
+                <li
+                  style="vertical-align: top !important"
+                  class="list-inline-item align-middle"
+                  *ngFor="let tier of floor?.tiers; let i = index"
+                >
+                  <label class="form-label"> Tier {{ tier.name }}</label>
+                  <input type="checkbox" name="tier{{ i }}{{ ifx }}" [(ngModel)]="tier.checked" />
+
+                  <ul style="border: dashed cornflowerblue" *ngIf="tier.checked">
+                    <li *ngFor="let room of tier.rooms; let ir = index">
+                      <input type="checkbox" name="room{{ i }}{{ ifx }}{{ ir }}" [(ngModel)]="room.checked" />{{ room.name }}
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br /><br /><br /><br />
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

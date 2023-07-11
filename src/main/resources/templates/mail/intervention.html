@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}" lang="en">
+  <head>
+    <title th:text="#{email.activation.title}">JHipster creation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <h3 style="text-align: center">
+      Upcoming <span th:text="${intervention.type}"></span> Water Shut Off – <span th:text="${day}"></span>, <span th:text="${date}"></span>
+    </h3>
+    <h3>Good Morning,</h3>
+    <h4>
+      This is to inform you that there will be <span th:if="${intervention.type.toString() == 'Construction'}"> a </span>
+      <span th:if="${intervention.type.toString() == 'Emergency'}"> an </span> <span th:text="${intervention.type}"></span> water shutdown
+      on <span th:text="${day}"></span>, <span th:text="${date}"></span>, between <span th:text="${start}"></span> to
+      <span th:text="${finish}"></span>. <span th:text="${intervention.raison}"></span> . The water shut-off will affect:
+    </h4>
+
+    <h4 th:each="floor: ${intervention.floors}">
+      <span> Floor <span style="color: #3e8acc" th:text="${floor.name}"></span> </span>
+
+      <h4 th:each="tier: ${floor.tiers}">
+        <span> Tier <span style="color: #3e8acc" th:text="${tier.name}"> </span> : </span>
+
+        <span th:each="room: ${tier.rooms}">
+          <span> <span style="color: #3e8acc" th:text="${room.name}"> </span> , </span>
+        </span>
+      </h4>
+    </h4>
+
+    <h4>
+      The Maintenance staff will also need access to the following units to facilitate this shutdown:
+      <span th:text="${intervention.unitNumber}"></span>
+    </h4>
+    <h4>
+      As a reminder, bathrooms are available on the Lower Level, First Floor, and 7thFloor. Thank you for your patience and understanding
+      while this necessary work is being done. Please contact the Management Office if you have any questions.
+    </h4>
+
+    <h4>Sincerely,</h4>
+    <h4>Pinnacle Management and Maintenance Team</h4>
+
+    <h4><span th:text="${intervention.type}"></span></h4>
+  </body>
+</html>

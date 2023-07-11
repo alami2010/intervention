@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20230706220741",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "floor",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Floor",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tier",
+      "otherEntityRelationshipName": "floor",
+      "relationshipName": "tier",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "intervention",
+      "otherEntityRelationshipName": "floor",
+      "relationshipName": "intervention",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

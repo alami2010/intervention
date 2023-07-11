@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20230706220742",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tier",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Tier",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "room",
+      "otherEntityRelationshipName": "tier",
+      "relationshipName": "room",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "floor",
+      "otherEntityRelationshipName": "tier",
+      "relationshipName": "floor",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
