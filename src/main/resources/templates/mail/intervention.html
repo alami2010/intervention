@@ -20,10 +20,12 @@
       <span> Floor <span style="color: #3e8acc" th:text="${floor.name}"></span> </span>
 
       <h4 th:each="tier: ${floor.tiers}">
-        <span> Tier <span style="color: #3e8acc" th:text="${tier.name}"> </span> : </span>
+        <span th:if="${tier.id != null }">
+          <span> Tier <span style="color: #3e8acc" th:text="${tier.name}"> </span> : </span>
 
-        <span th:each="room: ${tier.rooms}">
-          <span> <span style="color: #3e8acc" th:text="${room.name}"> </span> , </span>
+          <span th:each="room: ${tier.rooms}">
+            <span th:if="${room.id != null }"> <span style="color: #3e8acc" th:text="${room.name}"> </span> , </span>
+          </span>
         </span>
       </h4>
     </h4>

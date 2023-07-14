@@ -94,7 +94,7 @@ public class InterventionServiceImpl implements InterventionService {
             });
 
         if (intervention.getEmail() != null) {
-            generatePDFToDownload(interventionSaved, false);
+            generatePDFToDownload(interventionRepository.findById(interventionSaved.getId()).orElseThrow(), false);
         }
 
         return interventionMapper.toDto(interventionSaved);
