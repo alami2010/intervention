@@ -12,7 +12,7 @@
     <h4>
       This is to inform you that there will be <span th:if="${intervention.type.toString() == 'Construction'}"> a </span>
       <span th:if="${intervention.type.toString() == 'Emergency'}"> an </span> <span th:text="${intervention.type}"></span> water shutdown
-      on <span th:text="${day}"></span>, <span th:text="${date}"></span>, between <span th:text="${start}"></span> to
+      on <span th:text="${day}"></span>, <span th:text="${date}"></span>, between <span th:text="${start}"></span> and
       <span th:text="${finish}"></span>. <span th:text="${intervention.raison}"></span> . The water shut-off will affect:
     </h4>
 
@@ -24,7 +24,7 @@
           <span> Tier <span style="color: #3e8acc" th:text="${tier.name}"> </span> : </span>
 
           <span th:each="room: ${tier.rooms}">
-            <span th:if="${room.id != null }"> <span style="color: #3e8acc" th:text="${room.name}"> </span> , </span>
+            <span th:if="${room.id != null }"> <span style="color: #3e8acc" th:text="${room.name}"> </span> </span>
           </span>
         </span>
       </h4>
