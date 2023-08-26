@@ -117,6 +117,9 @@ export class InterventionService {
   }
 
   protected convertDateFromServer(restIntervention: RestIntervention): IIntervention {
+    console.info(restIntervention.start);
+    console.info(dayjs(restIntervention.start));
+
     return {
       ...restIntervention,
       start: restIntervention.start ? dayjs(restIntervention.start) : undefined,

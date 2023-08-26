@@ -51,8 +51,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: go.dance.contact@gmail.com
-    password: dqhidkhpvtiffknz
+    username: wsdnotification@gmail.com
+    password: arocdtknsnwenxms
     properties:
       mail:
         smtp:

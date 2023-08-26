@@ -4,6 +4,7 @@ import com.ydahar.jbd.domain.enumeration.TypeIntervention;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,9 +18,9 @@ public class InterventionDTO implements Serializable {
 
     private TypeIntervention type;
 
-    private Instant start;
+    private LocalDateTime start;
 
-    private Instant finish;
+    private LocalDateTime finish;
 
     private String raison;
 
@@ -47,19 +48,19 @@ public class InterventionDTO implements Serializable {
         this.type = type;
     }
 
-    public Instant getStart() {
+    public LocalDateTime getStart() {
         return start;
     }
 
-    public void setStart(Instant start) {
+    public void setStart(LocalDateTime start) {
         this.start = start;
     }
 
-    public Instant getFinish() {
+    public LocalDateTime getFinish() {
         return finish;
     }
 
-    public void setFinish(Instant finish) {
+    public void setFinish(LocalDateTime finish) {
         this.finish = finish;
     }
 

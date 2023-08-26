@@ -1,3 +1,5 @@
+./mvnw -Pprod clean verify -DskipTests
+
 # intervention
 
 java -jar intervention-0.0.1-SNAPSHOT.jar --server.port=8084 & disown

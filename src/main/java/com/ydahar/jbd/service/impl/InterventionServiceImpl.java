@@ -13,8 +13,11 @@ import com.ydahar.jbd.service.mapper.InterventionMapper;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -156,12 +159,6 @@ public class InterventionServiceImpl implements InterventionService {
         Context context = new Context();
         context.setVariable("intervention", intervention);
 
-        if (intervention.getUnitNumber() != null) {
-            String utnits = String.join(" and ", intervention.getUnitNumber().split(" "));
-
-            intervention.setUnitNumber(utnits);
-        }
-
         String logoString = Utils.getLogo();
 
         context.setVariable("logo", logoString);
@@ -169,11 +166,9 @@ public class InterventionServiceImpl implements InterventionService {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a").withZone(ZoneId.systemDefault());
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("MM/dd/yyyy").withZone(ZoneId.systemDefault());
-
         context.setVariable("start", formatter.format(intervention.getStart()));
         context.setVariable("finish", formatter.format(intervention.getFinish()));
         context.setVariable("date", formatter2.format(intervention.getStart()));
-
         String content = templateEngine.process("mail/intervention", context);
 
         if (intervention.getEmail() != null) {

@@ -5,6 +5,7 @@ import com.ydahar.jbd.domain.enumeration.TypeIntervention;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -29,10 +30,10 @@ public class Intervention implements Serializable {
     private TypeIntervention type;
 
     @Column(name = "start")
-    private Instant start;
+    private LocalDateTime start;
 
     @Column(name = "finish")
-    private Instant finish;
+    private LocalDateTime finish;
 
     @Column(name = "raison")
     private String raison;
@@ -78,29 +79,29 @@ public class Intervention implements Serializable {
         this.type = type;
     }
 
-    public Instant getStart() {
+    public LocalDateTime getStart() {
         return this.start;
     }
 
-    public Intervention start(Instant start) {
+    public Intervention start(LocalDateTime start) {
         this.setStart(start);
         return this;
     }
 
-    public void setStart(Instant start) {
+    public void setStart(LocalDateTime start) {
         this.start = start;
     }
 
-    public Instant getFinish() {
+    public LocalDateTime getFinish() {
         return this.finish;
     }
 
-    public Intervention finish(Instant finish) {
+    public Intervention finish(LocalDateTime finish) {
         this.setFinish(finish);
         return this;
     }
 
-    public void setFinish(Instant finish) {
+    public void setFinish(LocalDateTime finish) {
         this.finish = finish;
     }
 

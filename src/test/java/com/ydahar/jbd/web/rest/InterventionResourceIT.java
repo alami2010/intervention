@@ -13,6 +13,7 @@ import com.ydahar.jbd.service.dto.InterventionDTO;
 import com.ydahar.jbd.service.mapper.InterventionMapper;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -39,11 +40,11 @@ class InterventionResourceIT {
     private static final TypeIntervention DEFAULT_TYPE = TypeIntervention.Construction;
     private static final TypeIntervention UPDATED_TYPE = TypeIntervention.Emergency;
 
-    private static final Instant DEFAULT_START = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_START = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final LocalDateTime DEFAULT_START = LocalDateTime.now();
+    private static final LocalDateTime UPDATED_START = LocalDateTime.now();
 
-    private static final Instant DEFAULT_FINISH = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_FINISH = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final LocalDateTime DEFAULT_FINISH = LocalDateTime.now();
+    private static final LocalDateTime UPDATED_FINISH = LocalDateTime.now();
 
     private static final String DEFAULT_RAISON = "AAAAAAAAAA";
     private static final String UPDATED_RAISON = "BBBBBBBBBB";
