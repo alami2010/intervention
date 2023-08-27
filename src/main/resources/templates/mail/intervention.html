@@ -12,8 +12,9 @@
     <h4>
       This is to inform you that there will be <span th:if="${intervention.type.toString() == 'Construction'}"> a </span>
       <span th:if="${intervention.type.toString() == 'Emergency'}"> an </span> <span th:text="${intervention.type}"></span> water shutdown
-      on <span th:text="${day}"></span>, <span th:text="${date}"></span>, between <span th:text="${start}"></span> and
-      <span th:text="${finish}"></span>. <span th:text="${intervention.raison}"></span> . The water shut-off will affect:
+      on <span th:text="${day}"></span>, <span th:text="${date}"></span>, between <span type="datetime-local" th:text="${start}"></span> and
+      <span type="datetime-local" th:text="${finish}"></span>. <span th:text="${intervention.raison}"></span> . The water shut-off will
+      affect:
     </h4>
 
     <h4 th:each="floor: ${intervention.floors}">
@@ -22,9 +23,10 @@
       <h4 th:each="tier: ${floor.tiers}">
         <span th:if="${tier.id != null }">
           <span> Tier <span style="color: #3e8acc" th:text="${tier.name}"> </span> : </span>
-
-          <span th:each="room: ${tier.rooms}">
-            <span th:if="${room.id != null }"> <span style="color: #3e8acc" th:text="${room.name}"> </span> </span>
+          <span th:each="room, state: ${tier.rooms}">
+            <span th:if="${room.id != null }">
+              <span style="color: #3e8acc" th:text="!${state.last} ? ${room.name} + ',': ${room.name}"> </span>
+            </span>
           </span>
         </span>
       </h4>
@@ -42,6 +44,6 @@
     <h4>Sincerely,</h4>
     <h4>Pinnacle Management and Maintenance Team</h4>
 
-    <h4><span th:text="${intervention.type}"></span></h4>
+    <h4><span th:text="Department"></span></h4>
   </body>
 </html>
