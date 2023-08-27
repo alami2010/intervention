@@ -13,8 +13,8 @@ import { IIntervention, NewIntervention } from '../intervention.model';
 export type PartialUpdateIntervention = Partial<IIntervention> & Pick<IIntervention, 'id'>;
 
 type RestOf<T extends IIntervention | NewIntervention> = Omit<T, 'start' | 'finish' | 'creationDate'> & {
-  start?: string | null;
-  finish?: string | null;
+  start?: any | null;
+  finish?: any | null;
   creationDate?: string | null;
 };
 
@@ -110,8 +110,8 @@ export class InterventionService {
 
     return {
       ...intervention,
-      start: dayjs(intervention.start).toJSON(),
-      finish: dayjs(intervention.finish).toJSON(),
+      start: intervention.start,
+      finish: intervention.finish,
       creationDate: intervention.creationDate?.format(DATE_FORMAT) ?? null,
     };
   }
